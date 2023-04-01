@@ -30,7 +30,6 @@ namespace Omega
         /// </summary>
         private void InitializeComponent()
         {
-            this.label5 = new System.Windows.Forms.Label();
             this.nickname_textbox = new System.Windows.Forms.TextBox();
             this.nickname_label = new System.Windows.Forms.Label();
             this.password_textbox = new System.Windows.Forms.TextBox();
@@ -42,24 +41,11 @@ namespace Omega
             this.showPassword_button = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label5.Location = new System.Drawing.Point(373, 574);
-            this.label5.Margin = new System.Windows.Forms.Padding(15);
-            this.label5.Name = "label5";
-            this.label5.Padding = new System.Windows.Forms.Padding(20, 5, 20, 5);
-            this.label5.Size = new System.Drawing.Size(370, 35);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Špatně vyplněná jedna z kolonek";
-            this.label5.Visible = false;
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
             // nickname_textbox
             // 
+            this.nickname_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.nickname_textbox.Location = new System.Drawing.Point(449, 123);
             this.nickname_textbox.Name = "nickname_textbox";
             this.nickname_textbox.Size = new System.Drawing.Size(239, 20);
@@ -67,6 +53,9 @@ namespace Omega
             // 
             // nickname_label
             // 
+            this.nickname_label.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.nickname_label.AutoSize = true;
             this.nickname_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.nickname_label.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -78,6 +67,9 @@ namespace Omega
             // 
             // password_textbox
             // 
+            this.password_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.password_textbox.Location = new System.Drawing.Point(449, 202);
             this.password_textbox.Name = "password_textbox";
             this.password_textbox.Size = new System.Drawing.Size(239, 20);
@@ -85,6 +77,9 @@ namespace Omega
             // 
             // password_label
             // 
+            this.password_label.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.password_label.AutoSize = true;
             this.password_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.password_label.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -96,6 +91,7 @@ namespace Omega
             // 
             // register_button
             // 
+            this.register_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.register_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.register_button.Location = new System.Drawing.Point(499, 355);
             this.register_button.Name = "register_button";
@@ -107,6 +103,9 @@ namespace Omega
             // 
             // code_label
             // 
+            this.code_label.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.code_label.AutoSize = true;
             this.code_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.code_label.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -118,6 +117,9 @@ namespace Omega
             // 
             // code_input
             // 
+            this.code_input.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.code_input.Location = new System.Drawing.Point(447, 276);
             this.code_input.MaxLength = 20;
             this.code_input.Name = "code_input";
@@ -126,6 +128,7 @@ namespace Omega
             // 
             // back_button
             // 
+            this.back_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.back_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.back_button.Location = new System.Drawing.Point(22, 601);
             this.back_button.Name = "back_button";
@@ -137,6 +140,9 @@ namespace Omega
             // 
             // showPassword_button
             // 
+            this.showPassword_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.showPassword_button.AutoSize = true;
             this.showPassword_button.Location = new System.Drawing.Point(449, 228);
             this.showPassword_button.Name = "showPassword_button";
@@ -157,7 +163,6 @@ namespace Omega
             this.Controls.Add(this.back_button);
             this.Controls.Add(this.code_label);
             this.Controls.Add(this.code_input);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.register_button);
             this.Controls.Add(this.password_label);
             this.Controls.Add(this.password_textbox);
@@ -172,8 +177,6 @@ namespace Omega
         
 
         #endregion
-
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox nickname_textbox;
         private System.Windows.Forms.Label nickname_label;
         private System.Windows.Forms.TextBox password_textbox;

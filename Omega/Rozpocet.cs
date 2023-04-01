@@ -48,7 +48,57 @@ namespace Omega
             
             return id;
         }
-        public static bool uploadList(List<Produkt> list_products,string cust_name,string cust_surname)
+        public static bool editList(int id,List<Produkt> list_products,string cust_name,string cust_surname)
+        {
+            var upload_rozpocet = new MySqlCommand();
+            MySqlConnection conn = DatabaseConnection.getConnection();
+            upload_rozpocet.Connection = conn;
+            try
+            {
+                upload_rozpocet.CommandText = ("update rozpocet set jmeno_zak = @cust_name, prijmeni_zak = @cust_surname where id = @rozpocet_id");
+                upload_rozpocet.Parameters.AddWithValue("rozpocet_id", id);
+                upload_rozpocet.Parameters.AddWithValue("cust_name", cust_name);
+                upload_rozpocet.Parameters.AddWithValue("cust_surname", cust_surname);
+                upload_rozpocet.ExecuteNonQuery();
+
+                var deleteProducts = new MySqlCommand();
+                deleteProducts.Connection = conn;
+                deleteProducts.CommandText = ("delete from produkt where rozpocet_id = @rozpocet_id;");
+                deleteProducts.Parameters.AddWithValue("rozpocet_id", id);
+                deleteProducts.ExecuteNonQuery();
+
+                foreach (Produkt p in list_products)
+                {
+
+                    var insert_produkt = new MySqlCommand();
+                    insert_produkt.Connection = conn;
+                    insert_produkt.CommandText = ("insert into produkt(nazev,rozpocet_id,jednotka,pocet,cena) values(@nazev,@rozpocet_id,@jednotka,@pocet,@cena);"); ;
+                    insert_produkt.Parameters.AddWithValue("nazev", p.Name);
+                    insert_produkt.Parameters.AddWithValue("rozpocet_id", id);
+                    insert_produkt.Parameters.AddWithValue("jednotka", p.Jednotka.ToString());
+                    insert_produkt.Parameters.AddWithValue("pocet", p.Count);
+                    insert_produkt.Parameters.AddWithValue("cena", p.Price);
+                    insert_produkt.ExecuteNonQuery();
+
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Nelze vytvorit rozpocet.");
+                return false;
+            }
+            finally {
+                DatabaseConnection.closeConnection();
+            }
+
+
+
+
+            return true;
+        }
+
+        public static bool uploadList(List<Produkt> list_products, string cust_name, string cust_surname)
         {
             int user_id = User.getIdFromNickname();
             var upload_rozpocet = new MySqlCommand();
@@ -67,7 +117,7 @@ namespace Omega
 
                 int rozpocet_id = Convert.ToInt32(upload_rozpocet.ExecuteScalar());
 
-            foreach (Produkt p in list_products)
+                foreach (Produkt p in list_products)
                 {
                     var insert_produkt = new MySqlCommand();
                     insert_produkt.Connection = conn;
@@ -95,8 +145,6 @@ namespace Omega
 
             return true;
         }
-
-
         public static List<Rozpocet> GetAllByNickname()
         {
             int user_id = User.getIdFromNickname();
@@ -157,6 +205,25 @@ namespace Omega
 
             DatabaseConnection.closeConnection();
             return rozpocet_list;
+        }
+
+        public static int delete(int id)
+        {
+            MySqlConnection conn = DatabaseConnection.getConnection();
+            var deleteProducts = new MySqlCommand();
+            deleteProducts.Connection = conn;
+            deleteProducts.CommandText = ("delete from produkt where rozpocet_id = @rozpocet_id;");
+            deleteProducts.Parameters.AddWithValue("rozpocet_id", id);
+            deleteProducts.ExecuteNonQuery();
+            var deleteRozpocet = new MySqlCommand();
+            deleteRozpocet.Connection = conn;
+            deleteRozpocet.CommandText = ("delete from rozpocet where id = @id;");
+            deleteRozpocet.Parameters.AddWithValue("id", id);
+            deleteRozpocet.ExecuteNonQuery();
+      
+            DatabaseConnection.closeConnection();
+
+            return id;
         }
 
         public override string ToString()

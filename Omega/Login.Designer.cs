@@ -147,11 +147,13 @@ namespace Omega
             // 
             // showPassword_button
             // 
+            this.showPassword_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.showPassword_button.AutoSize = true;
+            this.showPassword_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.showPassword_button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(219)))), ((int)(((byte)(203)))));
             this.showPassword_button.Location = new System.Drawing.Point(276, 193);
             this.showPassword_button.Name = "showPassword_button";
-            this.showPassword_button.Size = new System.Drawing.Size(92, 17);
+            this.showPassword_button.Size = new System.Drawing.Size(106, 17);
             this.showPassword_button.TabIndex = 9;
             this.showPassword_button.Text = "Zobrazit heslo";
             this.showPassword_button.UseVisualStyleBackColor = true;
