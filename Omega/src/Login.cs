@@ -22,15 +22,16 @@ namespace Omega
 
         public Login()
         {
-            this.FormClosed += MyClosedHandler;
+            this.FormClosed += Program.MyClosedHandler;
             InitializeComponent();
             this.password_textbox.PasswordChar = '\u25CF';
         }
 
-        protected void MyClosedHandler(object sender, EventArgs e)
-        {
-            System.Windows.Forms.Application.ExitThread();
-        }
+        
+
+        /// <summary>
+        /// Method <c>button1_Click</c> validates nickaname_textBox and password_textBox.Text and if yes then it will hide this form and show Menu form
+        /// </summary>
         private void button1_Click(object sender, EventArgs e)
         {
             if (RegexValidator.one_digit_Word(this.nickname_textbox.Text) && this.password_textbox.Text != "")
@@ -55,6 +56,9 @@ namespace Omega
             
             
         }
+        /// <summary>
+        /// Method <c>button2_Click</c> hides current form and shows Registrace form
+        /// </summary>
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -62,8 +66,10 @@ namespace Omega
             registrace.Show();
         }
 
-       
 
+        /// <summary>
+        /// Method <c>checkBox1_CheckedChanged</c> changes password_textbox.text to password char "*" if showPassword button is checked and if not then its showed normally
+        /// </summary>
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (this.showPassword_button.Checked)

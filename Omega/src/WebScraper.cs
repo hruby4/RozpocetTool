@@ -14,7 +14,9 @@ namespace Omega {
  
     public static class WebScraper
     {
-
+        /// <summary>
+        /// Method <c>GetProducts</c> gradually gets the type products and passes them to AppendProducts method
+        /// </summary>
         public static async void GetProducts(string url,List<Produkt> products)
         {
             var httpClient = new HttpClient();
@@ -38,6 +40,9 @@ namespace Omega {
             }
 
         }
+        /// <summary>
+        /// Method <c>AppendProducts</c> passes all the pages with products of the type to the GetPage method
+        /// </summary>
         public static async Task AppendProducts(List<Produkt> products, HttpClient httpClient, string url)
         {
             var i = 0;
@@ -46,12 +51,14 @@ namespace Omega {
             {
                 i++;
                 string try_url = url + "?page=" + i.ToString();
-                var task = GetAllPages(products, httpClient, try_url, i,cont);
+                var task = GetPage(products, httpClient, try_url, i,cont);
                 await task;
             }
         }
-
-        public static async Task GetAllPages(List<Produkt> products, HttpClient httpClient, string url, int i,bool cont)
+        /// <summary>
+        /// Method <c>GetPage</c> scans the page for products and passes them to products list
+        /// </summary>
+        public static async Task GetPage(List<Produkt> products, HttpClient httpClient, string url, int i,bool cont)
         {
             var prod_doc = await httpClient.GetStringAsync(url);
             HtmlNodeCollection product_nodes = null;
@@ -73,32 +80,30 @@ namespace Omega {
             }
             if (product_nodes != null)
             {
-                foreach (var product in product_nodes)
+                try
                 {
-
-                    try
+                    foreach (var product in product_nodes)
                     {
-                        string productName = WebUtility.HtmlDecode(product.SelectSingleNode("div[2]/div[1]/h2/a").InnerText);
-                        int productPrice = 0;
-                        if (product.SelectSingleNode("div[2]/div[3]/div[2]/div/span[1]") != null)
+
+                        try
                         {
+                            string productName = WebUtility.HtmlDecode(product.SelectSingleNode("div[2]/div[1]/h2/a").InnerText);
+                            int productPrice = 0;
                             productPrice = System.Convert.ToInt32(product.SelectSingleNode("div[2]/div[3]/div[2]/div/span[1]").InnerText);
+                            string jednotka = "ks";
+                            products.Add(new Produkt(productName, productPrice, jednotka, 0));
                         }
-                        else
+                        catch
                         {
-                            productPrice = 0;
+
+                            cont = false;
+                            break;
+
                         }
-                        string jednotka = "ks";
-
-
-                        products.Add(new Produkt(productName, productPrice, jednotka, 0));
                     }
-                    catch {
-                        
-                        cont = false;
-                        break;
-                        
-                    }
+                }
+                catch {
+                    ;
                 }
 
             }

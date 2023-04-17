@@ -12,17 +12,15 @@ namespace Omega
     {
         public RozpocetList()
         {
-            this.FormClosed += MyClosedHandler;
+            this.FormClosed += Program.MyClosedHandler;
             InitializeComponent();
 
             
         }
 
-        protected void MyClosedHandler(object sender, EventArgs e)
-        {
-            System.Windows.Forms.Application.ExitThread();
-        }
-
+        /// <summary>
+        /// Method <c>back_button_Click</c> hides current form and shows Menu form
+        /// </summary>
         private void back_button_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -30,7 +28,9 @@ namespace Omega
             menu.Show();
         }
 
-
+        /// <summary>
+        /// Method <c>RozpocetList_Load</c> loads all the Rozpocet in Rozpocet.GetAllByNickname and fills it into lst_listbox
+        /// </summary>
         private void RozpocetList_Load(object sender, EventArgs e)
         {
             foreach (Rozpocet r in Rozpocet.GetAllByNickname())
@@ -39,7 +39,9 @@ namespace Omega
             }
             this.list_listBox.MouseDoubleClick += new MouseEventHandler(list_listBox_MouseDoubleClick);
         }
-
+        /// <summary>
+        /// Method <c>list_listBox_MouseDoubleClick</c> gets the index of double-clicked item from the list_listbox and closes current form and opens the RozpocetShow and passes it the id from the selected item
+        /// </summary>
         private void list_listBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             int index = this.list_listBox.IndexFromPoint(e.Location);
@@ -55,7 +57,9 @@ namespace Omega
 
             }
         }
-
+        /// <summary>
+        /// Method <c>open_button_Click</c> hides current form and shows RozpocetShow form and passes it the id from selected item from the list_listbox
+        /// </summary>
         private void open_button_Click(object sender, EventArgs e)
         {
             if (this.list_listBox.SelectedItem != null) {
@@ -65,7 +69,9 @@ namespace Omega
                 RozpocetShow.Show();
             }
         }
-
+        /// <summary>
+        /// Method <c>remove_button_Click</c> removes items from productList and product_list listBox but only if some item was selected
+        /// </summary>
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -74,12 +80,15 @@ namespace Omega
                 {
                     this.list_listBox.Items.Add(this.list_listBox.SelectedItem);
                     this.list_listBox.Items.Remove(this.list_listBox.SelectedItem);
+                    Rozpocet.delete(((Rozpocet)this.list_listBox.SelectedItem).Id);
+
 
                 }
                 else
                 {
                     Rozpocet.delete(((Rozpocet)this.list_listBox.SelectedItem).Id);
                     this.list_listBox.Items.Remove(this.list_listBox.SelectedItem);
+                   
 
 
                 }
@@ -91,7 +100,9 @@ namespace Omega
             }
 
         }
-
+        /// <summary>
+        /// Method <c>vytisknout_button_Click</c> opens the save dialog if some item was selected
+        /// </summary>
         private void vytisknout_button_Click(object sender, EventArgs e)
         {
             try
@@ -109,7 +120,9 @@ namespace Omega
                 MessageBox.Show("Nebylo vybráno nic k exportu");
             }
         }
-
+        /// <summary>
+        /// Method <c>vytisknout_button_Click</c> creates a pdf from selected rozpocet and saves it into the selected path
+        /// </summary>
         private void save_file_dialog_FileOk(object sender, CancelEventArgs e)
         {
 

@@ -36,7 +36,12 @@ namespace Omega
             this.Surname_cust = surname_cust;
             this.Id = id;
         }
-
+        /// <summary>
+        /// Method <c>getLastId</c> gets the max id from rozpocet table
+        /// </summary>
+        /// <returns>
+        /// max id
+        /// </returns>
         public static int getLastId()
         {
             MySqlConnection conn = DatabaseConnection.getConnection();
@@ -48,6 +53,12 @@ namespace Omega
             
             return id;
         }
+        /// <summary>
+        /// Method <c>editList</c> edits the rozpocet table and the produkt table in database with parameters
+        /// </summary>
+        /// <returns>
+        /// true if there will be no problem then false
+        /// </returns>
         public static bool editList(int id,List<Produkt> list_products,string cust_name,string cust_surname)
         {
             var upload_rozpocet = new MySqlCommand();
@@ -97,7 +108,12 @@ namespace Omega
 
             return true;
         }
-
+        /// <summary>
+        /// Method <c>uploadList</c> inserts in the rozpocet table and produkt in database with parameters
+        /// </summary>
+        /// <returns>
+        /// true if there will be no problem then false
+        /// </returns>
         public static bool uploadList(List<Produkt> list_products, string cust_name, string cust_surname)
         {
             int user_id = User.getIdFromNickname();
@@ -145,6 +161,12 @@ namespace Omega
 
             return true;
         }
+        /// <summary>
+        /// Method <c>GetAllByNickname</c> gets all produkt tables with the user nickname that is logged in now
+        /// </summary>
+        /// <returns>
+        /// list made of rozpocet instances
+        /// </returns>
         public static List<Rozpocet> GetAllByNickname()
         {
             int user_id = User.getIdFromNickname();
@@ -207,23 +229,40 @@ namespace Omega
             return rozpocet_list;
         }
 
-        public static int delete(int id)
+        /// <summary>
+        /// Method <c>delete</c> deletes from produkt and rozpocet tables where id is equal to parameter
+        /// </summary>
+        /// <returns>
+        /// list made of rozpocet instances
+        /// </returns>
+        public static void delete(int id)
         {
-            MySqlConnection conn = DatabaseConnection.getConnection();
-            var deleteProducts = new MySqlCommand();
-            deleteProducts.Connection = conn;
-            deleteProducts.CommandText = ("delete from produkt where rozpocet_id = @rozpocet_id;");
-            deleteProducts.Parameters.AddWithValue("rozpocet_id", id);
-            deleteProducts.ExecuteNonQuery();
-            var deleteRozpocet = new MySqlCommand();
-            deleteRozpocet.Connection = conn;
-            deleteRozpocet.CommandText = ("delete from rozpocet where id = @id;");
-            deleteRozpocet.Parameters.AddWithValue("id", id);
-            deleteRozpocet.ExecuteNonQuery();
-      
-            DatabaseConnection.closeConnection();
+            try
+            {
+                MySqlConnection conn = DatabaseConnection.getConnection();
+                var deleteProducts = new MySqlCommand();
+                deleteProducts.Connection = conn;
+                deleteProducts.CommandText = ("delete from produkt where rozpocet_id = @rozpocet_id;");
+                deleteProducts.Parameters.AddWithValue("rozpocet_id", id);
+                deleteProducts.ExecuteNonQuery();
+                var deleteRozpocet = new MySqlCommand();
+                deleteRozpocet.Connection = conn;
+                deleteRozpocet.CommandText = ("delete from rozpocet where id = @id;");
+                deleteRozpocet.Parameters.AddWithValue("id", id);
+                deleteRozpocet.ExecuteNonQuery();
 
-            return id;
+                DatabaseConnection.closeConnection();
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception(ex.Message);
+            }
+            finally {
+                DatabaseConnection.closeConnection();
+            }
+
+            
         }
 
         public override string ToString()

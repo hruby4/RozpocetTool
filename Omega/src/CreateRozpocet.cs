@@ -10,17 +10,18 @@ namespace Omega
     {
         List<Produkt> productList = new List<Produkt>();
         double total = 0;
+
+
         public CreateRozpocet()
         {
-            this.FormClosed += MyClosedHandler;
+            this.FormClosed += Program.MyClosedHandler;
             InitializeComponent();
         }
 
 
-        protected void MyClosedHandler(object sender, EventArgs e)
-        {
-            System.Windows.Forms.Application.ExitThread();
-        }
+        /// <summary>
+        /// Method <c>back_button_Click</c> hides current form and shows Menu form
+        /// </summary>
         private void back_button_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -28,7 +29,9 @@ namespace Omega
             menu.Show();
         }
 
-
+        /// <summary>
+        /// Method <c>button1_Click</c> gets texts from textBoxes and appends them to productList and product_list listBox
+        /// </summary>
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -58,7 +61,9 @@ namespace Omega
                 MessageBox.Show("Špatně zadané hodnoty");
             }
         }
-
+        /// <summary>
+        /// Method <c>remove_button_Click</c> removes items from productList and product_list listBox but only if some item was selected
+        /// </summary>
         private void remove_button_Click(object sender, EventArgs e)
         {
             try
@@ -94,7 +99,9 @@ namespace Omega
             }
         }
 
-
+        /// <summary>
+        /// Method <c>save_button_Click</c> validates if textBoxes texts are in required patterns and then it will try to pass them to uploadList method
+        /// </summary>
         private void save_button_Click(object sender, EventArgs e)
         {
             
@@ -119,6 +126,9 @@ namespace Omega
             }
         }
 
+        /// <summary>
+        /// Method <c>search_button_Click</c> clears the search_listbox and then fills sorted products from Program.initialize_products and adds it into searched_listBox and then sorts the listBox
+        /// </summary>
         private void search_button_Click(object sender, EventArgs e)
         {
             this.searched_listBox.Items.Clear();
@@ -150,6 +160,9 @@ namespace Omega
             this.searched_listBox.Visible = true;
         }
 
+        /// <summary>
+        /// Method <c>searched_listBox_MouseDoubleClick</c> gets index from double clicked item from searched_listBox and passes the texts to textBoxes
+        /// </summary>
         void searched_listBox_MouseDoubleClick(object sender, MouseEventArgs e)
 
         {
@@ -168,6 +181,9 @@ namespace Omega
 
         }
 
+        /// <summary>
+        /// Method <c>CreateRozpocet_Load</c> adds a searched_listBox_MouseDoubleClick to searched_listbox MouseDoubleClick
+        /// </summary>
         private void CreateRozpocet_Load(object sender, EventArgs e)
         {
             this.searched_listBox.MouseDoubleClick += new MouseEventHandler(searched_listBox_MouseDoubleClick);

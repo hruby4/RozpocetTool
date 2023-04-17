@@ -1,6 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
-using System.Data;
+﻿using System;
 using System.Linq;
 using System.Security.Cryptography;
 
@@ -9,6 +7,12 @@ namespace Omega
 {
     public class PasswordManipulator
     {
+        /// <summary>
+        /// Method <c>HashPassword</c> hashes the given string
+        /// </summary>
+        /// <returns>
+        /// hashed string
+        /// </returns>
         public static string HashPassword(string password)
         {
             byte[] salt = new byte[16];
@@ -24,6 +28,12 @@ namespace Omega
             return Convert.ToBase64String(salt) + "." + Convert.ToBase64String(hashBytes);
         }
 
+        /// <summary>
+        /// Method <c>HashPassword</c> compares if string and hashed string is equal
+        /// </summary>
+        /// <returns>
+        /// if its equal true then false
+        /// </returns>
         public static bool VerifyPassword(string userInput, string hashedPassword)
         {
             string[] saltAndHash = hashedPassword.Split('.');

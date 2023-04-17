@@ -232,7 +232,6 @@
     <Compile Include="src\RozpocetShow.Designer.cs">
       <DependentUpon>RozpocetShow.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\ThreadPool.cs" />
     <Compile Include="src\User.cs" />
     <Compile Include="src\WebScraper.cs" />
     <EmbeddedResource Include="src\CreateRozpocet.resx">

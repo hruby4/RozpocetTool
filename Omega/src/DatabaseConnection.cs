@@ -10,7 +10,12 @@ namespace Omega
     {
         private static MySqlConnection connection = null;
 
-
+        /// <summary>
+        /// Method <c>getConnectione</c> if connection is not null it creates a new connection from config file and then opens but if not then the connection will be only opened
+        /// </summary>
+        /// <returns>
+        /// connection
+        /// </returns>
         public static MySqlConnection getConnection() {
             if (connection == null)
             {
@@ -32,22 +37,21 @@ namespace Omega
                 catch
                 {
                     MessageBox.Show("Špatné připojení k internetu.");
+                    return null;
                 }
             }
             else {
-                try
-                {
-                    connection.Open();
-                }
-                catch {
-                    ;
-                }
+                connection.Open();
+
             }
             
             return connection;
         }
 
 
+        /// <summary>
+        /// Method <c>closeConnection</c> closes database connection
+        /// </summary>
         public static void closeConnection() {
             if (connection != null) {
                 connection.Close();
