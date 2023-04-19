@@ -30,6 +30,7 @@ C:\Users\hkuba\Desktop\School\pv\Omega\Omega\bin\Release\Microsoft.Extensions.Pr
 C:\Users\hkuba\Desktop\School\pv\Omega\Omega\bin\Release\Microsoft.Net.Http.Headers.dll
 C:\Users\hkuba\Desktop\School\pv\Omega\Omega\bin\Release\MySql.Data.dll
 C:\Users\hkuba\Desktop\School\pv\Omega\Omega\bin\Release\Newtonsoft.Json.dll
+C:\Users\hkuba\Desktop\School\pv\Omega\Omega\bin\Release\nunit.framework.dll
 C:\Users\hkuba\Desktop\School\pv\Omega\Omega\bin\Release\System.Buffers.dll
 C:\Users\hkuba\Desktop\School\pv\Omega\Omega\bin\Release\System.Diagnostics.DiagnosticSource.dll
 C:\Users\hkuba\Desktop\School\pv\Omega\Omega\bin\Release\System.Memory.dll
@@ -66,6 +67,7 @@ C:\Users\hkuba\Desktop\School\pv\Omega\Omega\bin\Release\Microsoft.Extensions.Pr
 C:\Users\hkuba\Desktop\School\pv\Omega\Omega\bin\Release\Microsoft.Net.Http.Headers.xml
 C:\Users\hkuba\Desktop\School\pv\Omega\Omega\bin\Release\MySql.Data.xml
 C:\Users\hkuba\Desktop\School\pv\Omega\Omega\bin\Release\Newtonsoft.Json.xml
+C:\Users\hkuba\Desktop\School\pv\Omega\Omega\bin\Release\nunit.framework.xml
 C:\Users\hkuba\Desktop\School\pv\Omega\Omega\bin\Release\System.Buffers.xml
 C:\Users\hkuba\Desktop\School\pv\Omega\Omega\bin\Release\System.Diagnostics.DiagnosticSource.xml
 C:\Users\hkuba\Desktop\School\pv\Omega\Omega\bin\Release\System.Memory.xml
